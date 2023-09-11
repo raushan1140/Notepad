@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notepad</title>
+    <style>
+        body{
+            background-color:rgb(70, 92, 218);
+            color: aliceblue;
+        }
+        button{
+            margin:10px;
+            padding: 10px 50px;
+            margin-left: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: rgba(13, 9, 238, 0.916);
+            border: 1px solid rgb(103, 124, 182);
+            color:rgb(5, 15, 75);
+        }
+        
+        textarea{
+            padding: 20px;
+            font-size: 1.5em;
+            border: 2px solid cyan;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1 style="color: black;">Write Something .... </h1>
+        <textarea name="" id="" cols="60" rows="15"></textarea>
+        <br>
+        <div class="buttons">
+            <button id="save">Save</button>
+            <button id="clear">Clear</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const textArea = document.querySelector("textarea");
+    
+    function save(){
+        const val = textArea.value;
+        localStorage.setItem("msg",val);
+    }
+    function clear(){
+        textArea.value="";
+        localStorage.clear();
+    }
+    const sb = document.querySelector("#save");
+    const cb = document.querySelector("#clear");
+    const p = localStorage.getItem("msg");
+    textArea.textContent=p
+    sb.addEventListener("click",save);
+    cb.addEventListener("click",clear);
+
+</script>
+
+</html>
